@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, jsonify, render_template
 import json 
 
 
@@ -25,7 +25,21 @@ books = [
 
 @app.route('/')
 def home_page():
-	return "Hello Flask"
+	return render_template('home.html')
+
+@app.route('/api/v1/resources/books/all')
+def all_books():
+    return jsonify(books)
+
+@app.route('/api/v1/resources/books')
+def book_id():
+    if id in request.args:
+        id = int(request.args['id']
+    for i in books:
+        if i['id'] == id:
+            return i['title']
+                
+
 
 
 app.run(host="172.27.183.209")
