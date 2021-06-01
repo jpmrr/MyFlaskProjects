@@ -35,6 +35,9 @@ def all_books():
 def book_id():
     if id in request.args:
         id = int(request.args['id']
+    else:
+        return "Error: No id field provided. Please specify an id."
+        
     for i in books:
         if i['id'] == id:
             return i['title']
